@@ -58,4 +58,4 @@ def scrape():
         'hemispheres':hemisphere_dicts
     }
 
-scrape()
+    return mars_info
