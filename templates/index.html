@@ -14,7 +14,23 @@
           <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Click Here for Mars</a></p>
         </div>
     </div>
-     
+    <div class="container">
+    <div class="row"></div>
+    <h2>Latest Mars News</h2>
+    <h4>{{ mars.news_title }}</h4>
+    <p>{{ mars.news_blurb }}</p>
+
+    <div class="row">
+        <div class="col-md-4 text-center">
+            <h2>Featured Image</h2>
+            <img src="{{ mars.news_img }}">
+        </div>
+        <div class="col-md-8 text-center">
+            <h4>Mars Facts</h4>
+            {{ mars.table|safe }}
+        </div>
+    </div>
+    </div>
     
 </body>
 </html>
