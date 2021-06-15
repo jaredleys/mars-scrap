@@ -7,14 +7,13 @@ mongo = PyMongo(app, uri="mongodb://localhost:27017/mars_app")
 
 @app.route("/")
 def home():
-    destination_data = mongo.db.costa_data.find_one()
-    return render_template("index.html", vacation=destination_data)
+    mars_data = mongo.db.mars_info.find_one()
+    return render_template("index.html", mars=mars_data)
 
 @app.route("/scrape")
 def scrape():
     mars_info = scrape_mars.scrape()
-    records = mongo.db.records
-    records.update({},records,upsert=True)
+    mongo.db.collection.update({},mars_info,upsert=True)
     return redirect("/")
 
 if __name__ == "__main__":
