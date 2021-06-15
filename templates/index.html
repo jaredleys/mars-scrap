@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" src="static/css/style.css">
     <title>Document</title>
 </head>
 <body>
@@ -21,13 +22,34 @@
     <p>{{ mars.news_blurb }}</p>
 
     <div class="row">
-        <div class="col-md-4 text-center">
+        <div class="col-md-6">
             <h2>Featured Image</h2>
             <img src="{{ mars.news_img }}">
         </div>
-        <div class="col-md-8 text-center">
+        <div class="col-md-6">
+            <br>
+            <br>
             <h4>Mars Facts</h4>
-            {{ mars.table|safe }}
+            <table class="table-dark">
+                {% autoescape false %}
+                {{ mars.table|safe }}
+                {% endautoescape %}
+            </table>
+        </div>
+        <h2>Mars Hemispheres</h2>
+        <div class="row">
+        {% for x in mars.hemispheres %}
+        <div class="col-md-3">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="{{ x.img_url }}" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">{{ x.title }}</p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>
+        </div>
+        {% endfor %}
         </div>
     </div>
     </div>

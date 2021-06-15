@@ -40,7 +40,7 @@ def scrape():
         hemispheres.append(hemisphere[0])
         div = soup.find('div', class_='downloads')
         images = div.find_all('a')
-        image_href = images[1]['href']
+        image_href = images[0]['href']
         img_url.append(url + image_href)
 
     hemisphere_dicts = []
